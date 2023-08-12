@@ -1,4 +1,5 @@
 // Lissajous generates GIF animations of random Lissajous figures.
+// Run with ./ex1.5 > out.gif
 
 package main
 
@@ -12,11 +13,11 @@ import (
 	"os"
 )
 
-var palette = []color.Color{color.White, color.Black}
+var palette = []color.Color{color.Black, color.RGBA{0x00, 0x99, 0x00, 0xff}}
 
 const (
-	whiteIndex = 0 // first color in palette
-	blackIndex = 1 // next color in palette
+	blackIndex = 0 // next color in palette
+	greenIndex = 1 // first color in palette
 )
 
 func main () {
@@ -41,7 +42,7 @@ func lissajous(out io.Writer) {
 		for t := 0.0; t < cycles*2*math.Pi; t += res {
 			x := math.Sin(t)
 			y := math.Sin(t*freq + phase)
-			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), blackIndex)
+			img.SetColorIndex(size+int(x*size+0.5), size+int(y*size+0.5), greenIndex)
 		}
 		phase += 0.1
 		anim.Delay = append(anim.Delay, delay)
