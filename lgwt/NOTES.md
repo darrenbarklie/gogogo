@@ -7,5 +7,5 @@
 go install golang.org/x/tools/cmd/godoc@latest
 
 # launch godocs
-godoc -http=localhost:9090
+godoc -http=localhost:6060
 ```
